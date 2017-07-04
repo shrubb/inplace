@@ -220,8 +220,8 @@ void transpose(bool row_major, double* data, int m, int n) {
 
 template<typename T>
 void transpose_fn(bool row_major, T* data, int m, int n) {
-    bool small_m = m < 32;
-    bool small_n = n < 32;
+    bool small_m = m <= 1025;
+    bool small_n = n <= 1025;
     //Heuristic to choose the fastest implementation
     //based on size of matrix and data layout
     if (!small_m && small_n) {
